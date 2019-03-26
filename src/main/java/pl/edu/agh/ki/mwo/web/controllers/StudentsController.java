@@ -7,9 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.edu.agh.ki.mwo.model.SchoolClass;
-import pl.edu.agh.ki.mwo.model.Student;
 
+import pl.edu.agh.ki.mwo.model.Student;
 import pl.edu.agh.ki.mwo.persistence.DatabaseConnector;
 
 @Controller
@@ -30,7 +29,7 @@ public class StudentsController {
             return "redirect:/Login";
         }
 
-        model.addAttribute("schoolClass", DatabaseConnector.getInstance().getSchoolClasses());
+        model.addAttribute("schoolClasses", DatabaseConnector.getInstance().getSchoolClasses());
         return "studentForm";
     }
 
