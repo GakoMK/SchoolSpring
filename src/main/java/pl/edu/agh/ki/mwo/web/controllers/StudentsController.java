@@ -95,4 +95,17 @@ public class StudentsController {
     }
 
 
+    @RequestMapping(value="/DeleteStudent", method=RequestMethod.POST)
+    public String deleteStudent(@RequestParam(value="studentId", required=false) String studentId,
+    		Model model, HttpSession session) {    	
+    	if (session.getAttribute("userLogin") == null)
+    		return "redirect:/Login";
+    	
+    	DatabaseConnector.getInstance().deleteStudent(studentId);    	
+       	model.addAttribute("students", DatabaseConnector.getInstance().getStudents());
+    	model.addAttribute("message", "Uczeń został usuniety");
+         	
+    	return "studentsList";
+    }    
+
 }

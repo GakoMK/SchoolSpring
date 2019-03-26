@@ -1,11 +1,11 @@
 pl\edu\agh\ki\mwo\model\Student.class
 pl\edu\agh\ki\mwo\persistence\SQLiteDialect.class
 pl\edu\agh\ki\mwo\web\controllers\SchoolsController.class
-pl\edu\agh\ki\mwo\persistence\HibernateUtil.class
 pl\edu\agh\ki\mwo\web\controllers\SchoolClassesController.class
-pl\edu\agh\ki\mwo\persistence\DatabaseConnector.class
 pl\edu\agh\ki\mwo\model\School.class
 pl\edu\agh\ki\mwo\web\controllers\LoginController.class
-pl\edu\agh\ki\mwo\web\controllers\StudentsController.class
 pl\edu\agh\ki\mwo\model\SchoolClass.class
 pl\edu\agh\ki\mwo\web\app\Application.class
+pl\edu\agh\ki\mwo\persistence\HibernateUtil.class
+pl\edu\agh\ki\mwo\persistence\DatabaseConnector.class
+pl\edu\agh\ki\mwo\web\controllers\StudentsController.class
