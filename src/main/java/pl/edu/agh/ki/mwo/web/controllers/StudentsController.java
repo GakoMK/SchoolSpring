@@ -34,6 +34,31 @@ public class StudentsController {
         return "studentForm";
     }
 
+
+    
+    @RequestMapping(value = "/CreateStudentClass", method = RequestMethod.POST)
+    public String createSchoolClass(@RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "surname", required = false) String surname,
+            @RequestParam(value = "pesel", required = false) String pesel,
+            @RequestParam(value = "schoolClass", required = false) String schoolClasslId,
+            Model model, HttpSession session) {
+        if (session.getAttribute("userLogin") == null) {
+            return "redirect:/Login";
+        }
+
+        Student student = new Student();
+        student.setName(name);
+        student.setSurname(surname);
+        student.setPesel(pesel);
+
+        DatabaseConnector.getInstance().addStudents(student, schoolClasslId);
+        model.addAttribute("students", DatabaseConnector.getInstance().getStudents());
+        model.addAttribute("message", "Dodano nowego gościa");
+
+        return "studentsList";
+    }
+
+
     @RequestMapping(value = "/EditStudent")
     public String displayAddStudentForm(@RequestParam(value = "studentID", required = false) String studentID, Model model, HttpSession session) {
         if (session.getAttribute("userLogin") == null) {
@@ -68,27 +93,6 @@ public class StudentsController {
 
         return "studentsList";
     }
-    
-    @RequestMapping(value = "/CreateStudentClass", method = RequestMethod.POST)
-    public String createSchoolClass(@RequestParam(value = "name", required = false) String name,
-            @RequestParam(value = "surname", required = false) String surname,
-            @RequestParam(value = "pesel", required = false) String pesel,
-            @RequestParam(value = "schoolClass", required = false) String schoolClasslId,
-            Model model, HttpSession session) {
-        if (session.getAttribute("userLogin") == null) {
-            return "redirect:/Login";
-        }
 
-        Student student = new Student();
-        student.setName(name);
-        student.setSurname(surname);
-        student.setPesel(pesel);
-
-        DatabaseConnector.getInstance().addStudents(student, schoolClasslId);
-        model.addAttribute("students", DatabaseConnector.getInstance().getStudents());
-        model.addAttribute("message", "Dodano nowego gościa");
-
-        return "studentsList";
-    }
 
 }
