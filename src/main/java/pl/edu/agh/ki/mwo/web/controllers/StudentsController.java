@@ -62,9 +62,9 @@ public class StudentsController {
         student.setSurname(surname);
         student.setPesel(pesel);
 
-        DatabaseConnector.getInstance().editStudents(student, schoolClasslId);
+        DatabaseConnector.getInstance().editStudents(studentID);
         model.addAttribute("students", DatabaseConnector.getInstance().getStudents());
-        model.addAttribute("message", "Dodano nowego hujka");
+        model.addAttribute("message", "Dodano nowego ucznia");
 
         return "studentsList";
     }
@@ -86,7 +86,7 @@ public class StudentsController {
 
         DatabaseConnector.getInstance().addStudents(student, schoolClasslId);
         model.addAttribute("students", DatabaseConnector.getInstance().getStudents());
-        model.addAttribute("message", "Dodano nowego hujka");
+        model.addAttribute("message", "Dodano nowego gościa");
 
         return "studentsList";
     }

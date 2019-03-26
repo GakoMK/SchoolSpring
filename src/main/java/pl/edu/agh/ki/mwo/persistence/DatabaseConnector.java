@@ -172,20 +172,15 @@ public class DatabaseConnector {
         }
         transaction.commit();
     }
-    
-    
-    public void editStudents(Student student, String schoolId) {
-        String hql = "FROM SchoolClass S WHERE S.id=" + schoolId;
+
+
+    public void editStudents(String studentID) {
+        String hql = "FROM Student S WHERE S.id=" + studentID;
         Query query = session.createQuery(hql);
-        List<SchoolClass> results = query.list();
+        List<Student> results = query.list();
         Transaction transaction = session.beginTransaction();
-        if (results.size() == 0) {
-            session.update(student);
-        } else {
-        
-            SchoolClass schoolClass = results.get(0);
-            schoolClass.addStudent(student);
-            session.save(schoolClass);
+        for (Student s : results) {
+            session.update(s);
         }
         transaction.commit();
     }

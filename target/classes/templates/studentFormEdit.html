@@ -1,28 +1,42 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layout">
-    <body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layout">
 
-        <div layout:fragment="content">
-            <div th:include="menuFragment" ></div>
-            <br/><br/>
-            <form action="ConfirmEditStudent" method="POST">
-                <table >
-                    <tr><td>name:</td><td><input type="text" name="studentID" th:value="${student.id}"/></td></tr>
-                    <tr><td>name:</td><td><input type="text" name="name" th:value="${student.name}"/></td></tr>
-                    <tr><td>surname:</td><td><input type="text" name="surname" th:value="${student.surname}"/></td></tr>
-                    <tr><td>pesel:</td><td><input type="text" name="pesel" th:value="${student.pesel}"/></td></tr>
-                    <tr><td>profil:</td>
-                        <td><select class="form-control" name="schoolClass" id="schoolClass">
-                                <option value="${studentClass.id}" ></option>
-                                <option th:each="c: ${schoolClass}" th:value="${c.id}" th:text="${c.profile}"></option>
-                            </select>
-                        </td>
-                    </tr>
-                </table><br/><BR/>
-                <input type="submit" value="Edytuj"/>
-            </form>
-        </div>
+<body>
 
-    </body>
+    <div layout:fragment="content">
+        <div th:include="menuFragment"></div>
+        <br /><br />
+        <form action="ConfirmEditStudent" method="POST">
+            <table>
+                <tr>
+                    <td>name:</td>
+                    <td><input type="hidden" name="studentID" th:value="${student.id}" /></td>
+                </tr>
+                <tr>
+                    <td>name:</td>
+                    <td><input type="text" name="name" th:value="${student.name}" /></td>
+                </tr>
+                <tr>
+                    <td>surname:</td>
+                    <td><input type="text" name="surname" th:value="${student.surname}" /></td>
+                </tr>
+                <tr>
+                    <td>pesel:</td>
+                    <td><input type="text" name="pesel" th:value="${student.pesel}" /></td>
+                </tr>
+                <tr>
+                    <td>profil:</td>
+                    <td><select class="form-control" name="schoolClass" id="schoolClass">
+                            <option value="${studentClass.id}"></option>
+                            <option th:each="c: ${schoolClass}" th:value="${c.id}" th:text="${c.profile}"></option>
+                        </select>
+                    </td>
+                </tr>
+            </table><br /><BR />
+            <input type="submit" value="Edytuj" />
+        </form>
+    </div>
+
+</body>
+
 </html>
