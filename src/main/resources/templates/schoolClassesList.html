@@ -11,7 +11,7 @@
     	<div th:include="menuFragment" ></div>
 		<br/><Br/>
 		<table border="1" cellpadding="5">
-			<tr><th>Id</th><th>Rok rozpoczęcia</th><th>Obecny rok</th><th>Profil</th><th>Akcje</th></tr>
+			<tr><th>Id</th><th>Rok rozpoczęcia</th><th>Obecny rok</th><th>Profil</th><th colspan="2">Akcje</th></tr>
 			<tr th:each="schoolClass: ${schoolClasses}">
 				<td><span th:text="${schoolClass.id}" /></td>
 				<td><span th:text="${schoolClass.startYear}" /></td>
@@ -22,7 +22,13 @@
 		            	<input type="hidden" name="schoolClassId" th:value="${schoolClass.id}" />
 		                <button type="submit">X</button>
 		            </form>
-		        </td>
+				</td>
+				<td>
+					<form action="EditSchoolClass" method="POST">
+						<input type="hidden" name="schoolClassID" th:value="${schoolClass.id}" />
+						<button type="submit">E</button>
+					</form>
+				</td>				
 			</tr>
 		
 		
