@@ -9,8 +9,8 @@
         <form action="ConfirmEditStudent" method="POST">
             <table>
                 <tr>
-                    <td>name:</td>
-                    <td><input type="hidden" name="studentID" th:value="${student.id}" /></td>
+                    <td>student id:</td>
+                    <td><input type="text" name="studentID" th:value="${student.id}" /></td>
                 </tr>
                 <tr>
                     <td>name:</td>
@@ -23,12 +23,15 @@
                 <tr>
                     <td>pesel:</td>
                     <td><input type="text" name="pesel" th:value="${student.pesel}" /></td>
-                </tr>
+                </tr>   
+                <!-- <tr>
+                    <td>profil id:</td>
+                    <td><input type="text" name="className" th:value="${studentClass.profile}" /></td>
+                </tr> -->
                 <tr>
                     <td>profil:</td>
                     <td><select class="form-control" name="schoolClass" id="schoolClass">
-                            <option value="${studentClass.id}"></option>
-                            <option th:each="c: ${schoolClass}" th:value="${c.id}" th:text="${c.profile}"></option>
+                            <option th:each="c: ${schoolClass}" th:value="${c.id}" th:text="${c.profile}" th:selected="${c.id == studentClassID}"></option>
                         </select>
                     </td>
                 </tr>

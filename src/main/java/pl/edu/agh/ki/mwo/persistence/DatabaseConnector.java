@@ -151,12 +151,16 @@ public class DatabaseConnector {
         return student;
     }
 
-    public SchoolClass getStudentClassByID(String id) {
-        String hql = "FROM SchoolClass S WHERE S.id=" + id;
-        Query query = session.createQuery(hql);
-        SchoolClass student = (SchoolClass) query.uniqueResult();
-        return student;
-    }
+    // public SchoolClass getStudentClassByID(String id) {
+    //     String hql = "FROM SchoolClass S WHERE S.id=" + id;
+    //     Query query = session.createQuery(hql);
+    //     SchoolClass student = (SchoolClass) query.uniqueResult();
+    //     return student;
+    //     // String hql = "FROM Student S WHERE S.id=" + id;
+    //     // Query query = session.createQuery(hql);
+    //     // SchoolClass student = ((Student) query.uniqueResult()).getSchoolClass();
+    //     // return student;
+    // }
         
     public void addStudents(Student student, String schoolId) {
         String hql = "FROM SchoolClass S WHERE S.id=" + schoolId;

@@ -49,7 +49,7 @@ public class StudentsController {
         student.setName(name);
         student.setSurname(surname);
         student.setPesel(pesel);
-
+        
         DatabaseConnector.getInstance().addStudents(student, schoolClasslId);
         model.addAttribute("students", DatabaseConnector.getInstance().getStudents());
         model.addAttribute("message", "Dodano nowego gościa");
@@ -63,9 +63,12 @@ public class StudentsController {
         if (session.getAttribute("userLogin") == null) {
             return "redirect:/Login";
         }
+        Student student = DatabaseConnector.getInstance().getStudentByID(studentID);
         model.addAttribute("schoolClass", DatabaseConnector.getInstance().getSchoolClasses());
-        model.addAttribute("student", DatabaseConnector.getInstance().getStudentByID(studentID));
-        model.addAttribute("studentClass", DatabaseConnector.getInstance().getStudentClassByID(studentID));
+        model.addAttribute("student", student);
+        model.addAttribute("studentClass", student.getSchoolClass());
+        model.addAttribute("studentClassID", student.getSchoolClass().getId());
+        System.out.println(student.getSchoolClass().getId() + "!!!!!!!!!!!!!!!!!!");
         
         return "studentFormEdit";
     }

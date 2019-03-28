@@ -47,7 +47,6 @@ public class SchoolClassesController {
 		schoolClass.setStartYear(Integer.valueOf(startYear));
 		schoolClass.setCurrentYear(Integer.valueOf(currentYear));
 		schoolClass.setProfile(profile);
-
 		DatabaseConnector.getInstance().addSchoolClass(schoolClass, schoolId);
 		model.addAttribute("schoolClasses", DatabaseConnector.getInstance().getSchoolClasses());
 		model.addAttribute("message", "Nowa klasa została dodana");
@@ -97,7 +96,6 @@ public class SchoolClassesController {
 		schoolClass.setStartYear(startYear);
 		schoolClass.setCurrentYear(currentYear);
 		schoolClass.setProfile(profile);
-		
 		DatabaseConnector.getInstance().editSchoolClass(id);
 		model.addAttribute("schoolClasses", DatabaseConnector.getInstance().getSchoolClasses());
 		model.addAttribute("message", "Zedytowano klasę");

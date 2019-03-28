@@ -18,6 +18,20 @@ public class Student implements java.io.Serializable {
 	
 	@Column
 	private String pesel;
+
+	@ManyToOne(targetEntity=SchoolClass.class,fetch = FetchType.LAZY)
+	@JoinColumn(name="class_id", referencedColumnName = "id")
+	private SchoolClass schoolClass;
+	// @OneToMany(fetch = FetchType.LAZY)
+	// @JoinColumn(name="class_id", referencedColumnName = "id")
+	// private SchoolClass schoolClass;
+	public SchoolClass getSchoolClass() {
+		return schoolClass;
+	}
+
+	public void setSchoolClass(SchoolClass schoolClass) {
+		this.schoolClass = schoolClass;
+	}
 	
 	public long getId() {
 		return id;
@@ -54,5 +68,7 @@ public class Student implements java.io.Serializable {
 	public void setPesel(String pesel) {
 		this.pesel = pesel;
 	}
+
+
 	
 }
