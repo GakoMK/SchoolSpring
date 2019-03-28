@@ -38,8 +38,8 @@ public class SchoolClassesController {
 	public String createSchoolClass(@RequestParam(value = "schoolClassStartYear", required = false) String startYear,
 			@RequestParam(value = "schoolClassCurrentYear", required = false) String currentYear,
 			@RequestParam(value = "schoolClassProfile", required = false) String profile,
-			@RequestParam(value = "schoolClassSchool", required = false) String schoolId, Model model,
-			HttpSession session) {
+			@RequestParam(value = "schoolClassSchool", required = false) String schoolId, 
+			Model model, HttpSession session) {
 		if (session.getAttribute("userLogin") == null)
 			return "redirect:/Login";
 
@@ -87,16 +87,18 @@ public class SchoolClassesController {
 			@RequestParam(value = "schoolClassCurrentYear", required = false) int currentYear,
 			@RequestParam(value = "schoolClassProfile", required = false) String profile,
 			@RequestParam(value = "schoolClassSchool", required = false) String id,
+			@RequestParam(value = "schoolClassID", required = false) String classID,
 		Model model, HttpSession session) {
-			System.out.println("to jest id: "+id);
+			System.out.println("@@@@@@@@@@@@   to jest id: "+id+" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		if (session.getAttribute("userLogin") == null) {
 			return "redirect:/Login";
 		}
 
-		SchoolClass schoolClass = DatabaseConnector.getInstance().getSchoolClassByID(id);
+		SchoolClass schoolClass = DatabaseConnector.getInstance().getSchoolClassByID(classID);
 		schoolClass.setStartYear(startYear);
 		schoolClass.setCurrentYear(currentYear);
 		schoolClass.setProfile(profile);
+		DatabaseConnector.getInstance().editSchoolClass(classID);
 		model.addAttribute("schoolClasses", DatabaseConnector.getInstance().getSchoolClasses());
 		model.addAttribute("message", "Zedytowano klasę");
 

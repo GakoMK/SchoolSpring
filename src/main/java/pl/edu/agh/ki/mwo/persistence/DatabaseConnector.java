@@ -103,6 +103,18 @@ public class DatabaseConnector {
         transaction.commit();
     }
 
+
+    public void updateSchoolClass(SchoolClass schoolClass, String schoolId) {
+        String hql = "FROM School S WHERE S.id=" + schoolId;
+        Query query = session.createQuery(hql);
+        List<School> results = query.list();
+        Transaction transaction = session.beginTransaction();
+        for (School s : results){
+            session.update(s);
+        }
+        transaction.commit();
+    }   
+
     public void deleteSchoolClass(String schoolClassId) {
         String hql = "FROM SchoolClass S WHERE S.id=" + schoolClassId;
         Query query = session.createQuery(hql);
