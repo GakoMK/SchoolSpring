@@ -22,11 +22,12 @@ public class Student implements java.io.Serializable {
 	@ManyToOne(targetEntity=SchoolClass.class,fetch = FetchType.LAZY)
 	@JoinColumn(name="class_id", referencedColumnName = "id")
 	private SchoolClass schoolClass;
+	
 	// @OneToMany(fetch = FetchType.LAZY)
 	// @JoinColumn(name="class_id", referencedColumnName = "id")
 	// private SchoolClass schoolClass;
 	public SchoolClass getSchoolClass() {
-		return schoolClass;
+		return this.schoolClass;
 	}
 
 	public void setSchoolClass(SchoolClass schoolClass) {

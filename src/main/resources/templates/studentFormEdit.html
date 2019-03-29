@@ -29,9 +29,13 @@
                     <td><input type="text" name="className" th:value="${studentClass.id}" /></td>
                 </tr>
                 <tr>
+                    <td>klasa id:</td>
+                    <td><input type="text" name="klasa" th:value="${klasa}" /></td>
+                </tr>                
+                <tr>
                     <td>profil:</td>
                     <td><select class="form-control" name="schoolClass" id="schoolClass">
-                            <option th:each="c: ${schoolClass}" th:value="${c.id}" th:text="${c.profile}" th:selected="${c.id == studentClassID}"></option>
+                            <option th:each="c: ${schoolClass}" th:value="${c.id}" th:text="${c.profile}" th:selected="${c.id == klasa}"></option>
                         </select>
                     </td>
                 </tr>

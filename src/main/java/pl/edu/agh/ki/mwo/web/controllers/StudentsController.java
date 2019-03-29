@@ -68,6 +68,7 @@ public class StudentsController {
         model.addAttribute("student", student);
         model.addAttribute("studentClass", student.getSchoolClass());
         model.addAttribute("studentClassID", student.getSchoolClass().getId());
+        model.addAttribute("klasa", student.getSchoolClass().getId());
         System.out.println(student.getSchoolClass().getId() + "!!!!!!!!!!!!!!!!!!");
         
         return "studentFormEdit";
@@ -79,19 +80,21 @@ public class StudentsController {
             @RequestParam(value = "studentID", required = false) String studentID,
             @RequestParam(value = "pesel", required = false) String pesel,
             @RequestParam(value = "schoolClass", required = false) String schoolClasslId,
+            @RequestParam(value = "klasa", required = false) String klasaID,
             Model model, HttpSession session) {
         if (session.getAttribute("userLogin") == null) {
             return "redirect:/Login";
         }
-
+        System.out.println("@@@@@@@@@@@@   to jest id: "+schoolClasslId+" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         Student student = DatabaseConnector.getInstance().getStudentByID(studentID);
         student.setName(name);
         student.setSurname(surname);
         student.setPesel(pesel);
+        student.setSchoolClass(DatabaseConnector.getInstance().getSchoolClassByID(schoolClasslId));
 
         DatabaseConnector.getInstance().editStudents(studentID);
         model.addAttribute("students", DatabaseConnector.getInstance().getStudents());
-        model.addAttribute("message", "Dodano nowego ucznia");
+        model.addAttribute("message", "Edytowano ucznia");
 
         return "studentsList";
     }
