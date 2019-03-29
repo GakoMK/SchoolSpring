@@ -74,6 +74,7 @@ public class SchoolClassesController {
 		if (session.getAttribute("userLogin") == null) {
 			return "redirect:/Login";
 		}
+		
 		model.addAttribute("schools", DatabaseConnector.getInstance().getSchools());
 		model.addAttribute("schoolClass", DatabaseConnector.getInstance().getSchoolClassByID(schoolClassID));
 
@@ -98,7 +99,9 @@ public class SchoolClassesController {
 		schoolClass.setStartYear(startYear);
 		schoolClass.setCurrentYear(currentYear);
 		schoolClass.setProfile(profile);
-		DatabaseConnector.getInstance().editSchoolClass(classID);
+		schoolClass.setSchool(DatabaseConnector.getInstance().getSchoolByID(id));
+		
+		DatabaseConnector.getInstance().editSchoolClass(schoolClass);
 		model.addAttribute("schoolClasses", DatabaseConnector.getInstance().getSchoolClasses());
 		model.addAttribute("message", "Zedytowano klasę");
 

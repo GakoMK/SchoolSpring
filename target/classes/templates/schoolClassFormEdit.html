@@ -21,14 +21,15 @@
                     <td><input type="text" name="schoolClassProfile" th:value="${schoolClass.profile}" /></td>
                 </tr>
                 <tr>
-                    <td>schoolClass.id:</td>
+                    <td>id klasy:</td>
                     <td><input type="text" name="schoolClassID" th:value="${schoolClass.id}" /></td>
-                </tr>
+                </tr>                                      
                 <tr>
                     <td>szkoła:</td>
                     <td><select class="form-control" name="schoolClassSchool" id="schoolClassSchool">
                             <option th:each="school: ${schools}" th:value="${school.id}" th:text="${school.name} + ', ' + ${school.address}" th:selected="${school.id == schoolClass.id}"></option>
-                        </select></td>
+                        </select>
+                    </td>
                 </tr>
             </table><br /><BR />
             <input type="submit" value="Zapisz edycję" />

@@ -134,14 +134,15 @@ public class DatabaseConnector {
     }
 
 
-    public void editSchoolClass(String schoolClassID) {
-        String hql = "FROM SchoolClass S WHERE S.id=" + schoolClassID;
-        Query query = session.createQuery(hql);
-        List<SchoolClass> results = query.list();
+    public void editSchoolClass(SchoolClass schoolClass) {
+        // String hql = "FROM SchoolClass S WHERE S.id=" + schoolClassID;
+        // Query query = session.createQuery(hql);
+        // List<SchoolClass> results = query.list();
         Transaction transaction = session.beginTransaction();
-        for (SchoolClass s : results) {
-            session.update(s);
-        }
+        session.update(schoolClass);
+        // for (SchoolClass s : results) {
+        //     session.update(s);
+        // }
         transaction.commit();
     }
 

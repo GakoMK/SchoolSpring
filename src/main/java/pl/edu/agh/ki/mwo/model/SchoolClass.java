@@ -25,6 +25,19 @@ public class SchoolClass implements java.io.Serializable {
 	@JoinColumn(name="class_id")
 	private Set<Student> students;
 
+	@ManyToOne(targetEntity=School.class,fetch = FetchType.LAZY)
+	@JoinColumn(name="school_id", referencedColumnName = "id")
+	private School school;
+	
+	public School getSchool() {
+		return this.school;
+	}
+	public void setSchool(School school) {
+		this.school = school;
+	}
+
+
+
 	public SchoolClass() {
 		students = new HashSet<Student>();
 	}
