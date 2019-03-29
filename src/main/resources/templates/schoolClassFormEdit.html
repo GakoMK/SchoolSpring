@@ -23,11 +23,15 @@
                 <tr>
                     <td>id klasy:</td>
                     <td><input type="text" name="schoolClassID" th:value="${schoolClass.id}" /></td>
+                </tr>   
+                <tr>
+                    <td>szkoła:</td>
+                    <td><input type="text" name="schoolid" th:value="${schoolid}" /></td>
                 </tr>                                      
                 <tr>
                     <td>szkoła:</td>
                     <td><select class="form-control" name="schoolClassSchool" id="schoolClassSchool">
-                            <option th:each="school: ${schools}" th:value="${school.id}" th:text="${school.name} + ', ' + ${school.address}" th:selected="${school.id == schoolClass.id}"></option>
+                            <option th:each="school: ${schools}" th:value="${school.id}" th:text="${school.name} + ', ' + ${school.address}" th:selected="${school.id == schoolid}"></option>
                         </select>
                     </td>
                 </tr>

@@ -74,10 +74,11 @@ public class SchoolClassesController {
 		if (session.getAttribute("userLogin") == null) {
 			return "redirect:/Login";
 		}
-		
-		model.addAttribute("schools", DatabaseConnector.getInstance().getSchools());
-		model.addAttribute("schoolClass", DatabaseConnector.getInstance().getSchoolClassByID(schoolClassID));
 
+		SchoolClass schoolClass = DatabaseConnector.getInstance().getSchoolClassByID(schoolClassID);
+		model.addAttribute("schools", DatabaseConnector.getInstance().getSchools());
+		model.addAttribute("schoolClass", schoolClass);
+		model.addAttribute("schoolid", schoolClass.getSchool().getId());
 		return "schoolClassFormEdit";
 	}
 
